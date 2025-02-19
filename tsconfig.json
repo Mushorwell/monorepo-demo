@@ -5,6 +5,12 @@
   "references": [
     {
       "path": "./design-system"
+    },
+    {
+      "path": "./hooks"
+    },
+    {
+      "path": "./utilities"
     }
   ]
 }

@@ -1,3 +1,5 @@
 packages:
   - 'packages/*'
   - 'design-system'
+  - 'hooks'
+  - 'utilities'
