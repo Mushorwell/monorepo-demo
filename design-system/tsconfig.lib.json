@@ -1,18 +1,18 @@
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "out-tsc/design-system",
+    "outDir": "../out-tsc/design-system",
     "types": [
       "node",
       "@nx/react/typings/cssmodule.d.ts",
       "@nx/react/typings/image.d.ts",
       "vite/client"
     ],
-    "rootDir": "src",
+    "rootDir": "../.",
     "jsx": "react-jsx",
     "module": "esnext",
     "moduleResolution": "bundler",
-    "tsBuildInfoFile": "out-tsc/design-system/tsconfig.lib.tsbuildinfo"
+    "tsBuildInfoFile": "../out-tsc/design-system/tsconfig.lib.tsbuildinfo"
   },
   "exclude": [
     "out-tsc",
@@ -41,5 +41,10 @@
     "eslint.config.cjs",
     "eslint.config.mjs"
   ],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
+  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
+  "references": [
+    {
+      "path": "../utilities/tsconfig.lib.json"
+    }
+  ]
 }

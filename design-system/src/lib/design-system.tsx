@@ -1,3 +1,4 @@
+import { makeFetchCall } from '@monorepo-demo/utilities';
 import styled from 'styled-components';
 
 const StyledDesignSystem = styled.div`

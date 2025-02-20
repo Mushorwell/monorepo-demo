@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
+    "rootDir": ".",
     "composite": true,
     "declarationMap": true,
     "emitDeclarationOnly": true,
     "importHelpers": true,
     "isolatedModules": true,
-    "lib": ["DOM","es2022"],
+    "lib": ["DOM", "es2022"],
     "module": "NodeNext",
     "moduleResolution": "nodenext",
     "noEmitOnError": true,
@@ -15,6 +16,12 @@
     "noUnusedLocals": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "es2022"
+    "target": "es2022",
+    "paths": {
+      "@monorepo-demo/core": ["core/src/index.ts"],
+      "@monorepo-demo/design-system": ["design-system/src/index.ts"],
+      "@monorepo-demo/hooks": ["hooks/src/index.ts"],
+      "@monorepo-demo/utilities": ["utilities/src/index.ts"]
+    }
   }
 }
