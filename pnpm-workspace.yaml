@@ -3,3 +3,4 @@ packages:
   - 'design-system'
   - 'hooks'
   - 'utilities'
+  - 'core'
