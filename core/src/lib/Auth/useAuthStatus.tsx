@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import { DEFAULT_CONFIG } from './AuthModels';
-import { useAuthStore } from './AuthStore';
+import { DEFAULT_CONFIG } from './authModels';
+import { useAuthStore } from './useAuthStore';
 
 export const useAuthStatus = () => {
-  const { token, tokenData, lastActivity, isAuthenticated } = useAuthStore();
+const { token, tokenData, lastActivity } = useAuthStore();
 
   return useQuery({
     queryKey: ['auth', 'status'],

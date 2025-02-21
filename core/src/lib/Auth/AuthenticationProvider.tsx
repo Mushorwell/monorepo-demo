@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { useAuthStore } from './AuthStore';
 import { useAuthStatus } from './useAuthStatus';
+import { useAuthStore } from './useAuthStore';
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,

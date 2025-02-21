@@ -1,7 +1,7 @@
 import { jwtDecode } from 'jwt-decode';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { AuthConfig, AuthState, AuthToken, DEFAULT_CONFIG } from './AuthModels';
+import { AuthState, AuthToken, DEFAULT_CONFIG } from './authModels';
 
 export const useAuthStore = create<AuthState>()(
   persist(

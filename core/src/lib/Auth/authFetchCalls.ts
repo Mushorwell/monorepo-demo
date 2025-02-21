@@ -1,5 +1,5 @@
 import { makeFetchCall } from '@monorepo-demo/utilities';
-import { useAuthStore } from './AuthStore';
+import { useAuthStore } from './useAuthStore';
 
 export const authFetchCall = makeFetchCall({
   baseURL: process.env.REACT_APP_API_URL,
