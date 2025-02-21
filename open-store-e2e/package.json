@@ -1,0 +1,12 @@
+{
+  "name": "open-store-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "projectType": "application",
+    "sourceRoot": "open-store-e2e/src",
+    "implicitDependencies": [
+      "@monorepo-demo/open-store"
+    ]
+  }
+}
