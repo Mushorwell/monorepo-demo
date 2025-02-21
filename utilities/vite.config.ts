@@ -52,4 +52,14 @@ export default defineConfig({
       provider: 'v8',
     },
   },
+  resolve: {
+    alias: {
+      '@monorepo-demo/core': path.resolve(__dirname, '../core/src/index.ts'),
+      '@monorepo-demo/hooks': path.resolve(__dirname, '../hooks/src/index.ts'),
+      '@monorepo-demo/design-system': path.resolve(
+        __dirname,
+        '../design-system/src/index.ts'
+      ),
+    },
+  },
 });
