@@ -3,6 +3,9 @@
   "include": [],
   "references": [
     {
+      "path": "../design-system"
+    },
+    {
       "path": "./tsconfig.lib.json"
     },
     {
