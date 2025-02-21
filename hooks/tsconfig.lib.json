@@ -46,10 +46,6 @@
     "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "../design-system/src/lib/InfiniteScroll/useInfiniteScroll.spec.tsx",
-    "../design-system/src/lib/InfiniteScroll/useInfiniteScroll.tsx",
-    "../design-system/src/lib/Pagination/usePagination.spec.tsx",
-    "../design-system/src/lib/Pagination/usePagination.tsx"
   ],
   "references": []
 }
