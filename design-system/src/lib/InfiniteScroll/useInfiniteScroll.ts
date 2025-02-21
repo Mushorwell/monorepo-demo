@@ -1,6 +1,6 @@
 import { makeFetchCall, Options } from '@monorepo-demo/utilities';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 interface UseInfiniteScrollOptions<T> {
   url: string;
