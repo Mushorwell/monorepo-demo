@@ -6,7 +6,7 @@ declare global {
 
 type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
-interface Options<TRequestData> {
+export interface Options<TRequestData> {
   method: HttpMethod;
   data?: TRequestData;
   headers?: Record<string, string>;
@@ -15,7 +15,7 @@ interface Options<TRequestData> {
   retryDelay?: number;
 }
 
-interface FetchCallbacks<TResponseData, TErrorData> {
+export interface FetchCallbacks<TResponseData, TErrorData> {
   onSuccess?: (data: TResponseData) => void;
   onError?: (error: TErrorData) => void;
   onFinally?: () => void;
@@ -30,6 +30,7 @@ interface FetchConfig {
   defaultHeaders?: Record<string, string>;
   defaultTimeoutMs?: number;
   responseHandlers?: ResponseHandlers;
+  authToken?: any;
 }
 
 // Default response handlers for common status codes
@@ -60,6 +61,7 @@ export const makeFetchCall = (config: FetchConfig = {}) => {
     defaultHeaders = {},
     defaultTimeoutMs = 5000,
     responseHandlers = {},
+    authToken,
   } = config;
 
   // Merge default and custom response handlers
@@ -69,7 +71,8 @@ export const makeFetchCall = (config: FetchConfig = {}) => {
   async function fetchCall<TRequestData, TResponseData, TErrorData = any>(
     url: string,
     options: Options<TRequestData>,
-    callbacks?: FetchCallbacks<TResponseData, TErrorData>
+    callbacks?: FetchCallbacks<TResponseData, TErrorData>,
+    token?: any
   ): Promise<TResponseData> {
     const {
       method,
@@ -80,6 +83,13 @@ export const makeFetchCall = (config: FetchConfig = {}) => {
       retryDelay = 1000,
     } = options;
 
+    const addAuthHeaders = (headers: Record<string, string>) => {
+      if (token && typeof token === 'string') {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+      return headers;
+    };
+
     const { onSuccess, onError, onFinally } = callbacks || {};
 
     // Construct full URL
@@ -87,7 +97,7 @@ export const makeFetchCall = (config: FetchConfig = {}) => {
 
     // Merge headers
     const fullHeaders = {
-      ...defaultHeaders,
+      ...addAuthHeaders(defaultHeaders),
       ...headers,
       'Content-Type': 'application/json',
     };
