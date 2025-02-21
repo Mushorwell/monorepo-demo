@@ -2,7 +2,7 @@
  * @module usePagination
  */
 
-import React, { ReactNode, useMemo, useState } from 'react';
+import { ReactNode, useMemo, useState } from 'react';
 import { Icon } from '../Icon/Icon';
 
 /**
