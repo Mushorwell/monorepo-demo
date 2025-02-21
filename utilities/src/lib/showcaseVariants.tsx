@@ -14,16 +14,6 @@ export type ShowcaseProps = {
   showLabel?: boolean;
 } & { children: ReactNode };
 
-type ELChildren =
-  | (
-      | string
-      | number
-      | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-      | Iterable<React.ReactNode>
-    )[]
-  | null
-  | undefined;
-
 const VariationsContainer = styled.div<{ children: any }>`
   display: flex;
   gap: 2rem;
