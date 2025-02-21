@@ -51,9 +51,5 @@
     "../design-system/src/lib/Pagination/usePagination.spec.tsx",
     "../design-system/src/lib/Pagination/usePagination.tsx"
   ],
-  "references": [
-    {
-      "path": "../design-system/tsconfig.lib.json"
-    }
-  ]
+  "references": []
 }
