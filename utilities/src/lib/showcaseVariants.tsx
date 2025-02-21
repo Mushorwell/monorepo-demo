@@ -1,9 +1,4 @@
-import React, {
-  Children,
-  cloneElement,
-  isValidElement,
-  ReactNode,
-} from 'react';
+import { Children, cloneElement, isValidElement, ReactNode } from 'react';
 import styled from 'styled-components';
 
 export type ShowcaseProps = {
