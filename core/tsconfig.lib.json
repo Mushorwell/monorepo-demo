@@ -13,9 +13,6 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "tsBuildInfoFile": "../out-tsc/core/tsconfig.lib.tsbuildinfo",
-    // "paths": {
-    //   "@utilities/*": ["../../../utilities/src/lib/*"]
-    // }
   },
   "exclude": [
     "out-tsc",
@@ -44,7 +41,7 @@
     "eslint.config.cjs",
     "eslint.config.mjs"
   ],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
+"include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
   "references": [
     {
       "path": "../utilities/tsconfig.lib.json"
