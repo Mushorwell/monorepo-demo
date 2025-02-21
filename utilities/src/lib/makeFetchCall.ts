@@ -146,7 +146,12 @@ export const makeFetchCall = (config: FetchConfig = {}) => {
       // Handle retries
       if (retries > 0) {
         await new Promise((resolve) => setTimeout(resolve, retryDelay));
-        return fetchCall(url, { ...options, retries: retries - 1 }, callbacks);
+        return fetchCall(
+          url,
+          { ...options, retries: retries - 1 },
+          callbacks,
+          authToken
+        );
       }
 
       onError?.(error as TErrorData);
@@ -166,7 +171,8 @@ export const makeFetchCall = (config: FetchConfig = {}) => {
       fetchCall<never, TResponseData, TErrorData>(
         url,
         { ...options, method: 'GET' },
-        callbacks
+        callbacks,
+        authToken
       ),
 
     post: <TRequestData, TResponseData, TErrorData = any>(
@@ -178,7 +184,8 @@ export const makeFetchCall = (config: FetchConfig = {}) => {
       fetchCall<TRequestData, TResponseData, TErrorData>(
         url,
         { ...options, method: 'POST', data },
-        callbacks
+        callbacks,
+        authToken
       ),
 
     put: <TRequestData, TResponseData, TErrorData = any>(
@@ -190,7 +197,8 @@ export const makeFetchCall = (config: FetchConfig = {}) => {
       fetchCall<TRequestData, TResponseData, TErrorData>(
         url,
         { ...options, method: 'PUT', data },
-        callbacks
+        callbacks,
+        authToken
       ),
 
     patch: <TRequestData, TResponseData, TErrorData = any>(
@@ -202,7 +210,8 @@ export const makeFetchCall = (config: FetchConfig = {}) => {
       fetchCall<TRequestData, TResponseData, TErrorData>(
         url,
         { ...options, method: 'PATCH', data },
-        callbacks
+        callbacks,
+        authToken
       ),
 
     delete: <TResponseData, TErrorData = any>(
@@ -213,7 +222,8 @@ export const makeFetchCall = (config: FetchConfig = {}) => {
       fetchCall<never, TResponseData, TErrorData>(
         url,
         { ...options, method: 'DELETE' },
-        callbacks
+        callbacks,
+        authToken
       ),
   };
 };
