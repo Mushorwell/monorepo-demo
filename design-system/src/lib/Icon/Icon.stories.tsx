@@ -12,7 +12,7 @@ const meta: Meta<typeof Icon> = {
 export default meta;
 type Story = StoryObj<typeof Icon>;
 
-export const Primary = {
+export const ExampleIcon = {
   args: {},
 };
 
@@ -20,7 +20,7 @@ export const Heading: Story = {
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/Welcome to Icon!/gi)).toBeTruthy();
+    expect(canvas.getByTestId('arrow-block-left')).toBeTruthy();
   },
 };
 
@@ -32,4 +32,10 @@ export const IconsGlossary: Story = {
       showPropName: false,
     }),
   args: {},
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    icons.forEach((icon) => {
+      expect(canvas.getByTestId(icon)).toBeTruthy();
+    });
+  },
 };
