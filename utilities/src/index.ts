@@ -1,5 +1,6 @@
 export * from './lib/drillDown';
 export * from './lib/makeFetchCall';
+export * from './lib/makeItemArray';
 export * from './lib/number';
 export * from './lib/renderArrays';
 export * from './lib/search';
