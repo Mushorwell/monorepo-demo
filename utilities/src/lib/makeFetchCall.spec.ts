@@ -15,7 +15,7 @@ describe('makeFetchCall', () => {
   });
 
   test('should successfully fetch data with GET method', async () => {
-    expect(mockFetch).toHaveBeenCalledWith(
+    await expect(fetchUtil.get('')).toHaveBeenCalledWith(
       expect.stringContaining('/endpoint'),
       {
         method: 'GET',
