@@ -21,6 +21,7 @@
       "@monorepo-demo/core": ["./core/src/index.ts"],
       "@monorepo-demo/design-system": ["./design-system/src/index.ts"],
       "@monorepo-demo/hooks": ["./hooks/src/index.ts"],
+      "@monorepo-demo/open-store": ["./open-store/src/main.tsx"],
       "@monorepo-demo/utilities": ["./utilities/src/index.ts"]
     }
   }
