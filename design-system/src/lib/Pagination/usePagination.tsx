@@ -70,6 +70,7 @@ type UsePaginationReturnType<T> = {
 type UsePaginationType<T> = {
   items: Array<T>;
   itemsPerPage: number;
+  initialPage?: number;
 };
 
 /**
@@ -81,6 +82,7 @@ type UsePaginationType<T> = {
 export const useListPagination2 = <T extends Itemtype>({
   items,
   itemsPerPage,
+  initialPage = 1,
 }: UsePaginationType<T>): UsePaginationReturnType<T> => {
   const numberOfPages = Math.ceil(items.length / itemsPerPage);
   const pageItems = useMemo(
@@ -91,7 +93,12 @@ export const useListPagination2 = <T extends Itemtype>({
     [items, itemsPerPage, numberOfPages]
   );
 
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState<number>(() => {
+    if (initialPage > numberOfPages || initialPage <= 0) {
+      return 1;
+    }
+    return initialPage;
+  });
 
   const paginationPages = useMemo(
     () =>
@@ -105,8 +112,13 @@ export const useListPagination2 = <T extends Itemtype>({
   const nextControl = useMemo(
     () => ({
       label: <Icon size={12} type="arrow-block-right" />,
-      onClick: (currentPage?: number) =>
-        currentPage && setCurrentPage(currentPage + 1),
+      onClick: (currentPage?: number) => {
+        return (
+          currentPage &&
+          currentPage < numberOfPages &&
+          setCurrentPage(currentPage + 1)
+        );
+      },
     }),
     []
   );
@@ -115,7 +127,7 @@ export const useListPagination2 = <T extends Itemtype>({
     () => ({
       label: <Icon size={12} type="arrow-block-left" />,
       onClick: (currentPage?: number) =>
-        currentPage && setCurrentPage(currentPage - 1),
+        currentPage && currentPage > 1 && setCurrentPage(currentPage - 1),
     }),
     []
   );
