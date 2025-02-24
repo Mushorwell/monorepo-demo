@@ -1,13 +1,19 @@
+import { Link, Route, Routes } from 'react-router';
 import styled from 'styled-components';
 import NxWelcome from './nx-welcome';
 
-import { Route, Routes, Link } from 'react-router-dom';
+import { makeFetchCall } from '@monorepo-demo/utilities';
 
 const StyledApp = styled.div`
   // Your style here
 `;
 
 export function App() {
+  makeFetchCall({ baseURL: 'https://fakestoreapi.com/' }).get(
+    'products',
+    {},
+    { onSuccess: (data) => console.log({ data }) }
+  );
   return (
     <StyledApp>
       <NxWelcome title="@monorepo-demo/open-store" />
