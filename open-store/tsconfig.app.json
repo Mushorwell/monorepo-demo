@@ -4,6 +4,7 @@
     "outDir": "out-tsc/open-store",
     "tsBuildInfoFile": "out-tsc/open-store/tsconfig.app.tsbuildinfo",
     "jsx": "react-jsx",
+    "jsxImportSource": "react",
     "lib": ["dom"],
     "types": [
       "node",

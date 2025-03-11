@@ -10,6 +10,7 @@
     ],
     "rootDir": "../.",
     "jsx": "react-jsx",
+    "jsxImportSource": "react",
     "module": "esnext",
     "moduleResolution": "bundler",
     "tsBuildInfoFile": "../out-tsc/design-system/tsconfig.lib.tsbuildinfo"

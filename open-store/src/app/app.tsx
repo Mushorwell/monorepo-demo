@@ -1,8 +1,16 @@
+import { TestStuff } from '@monorepo-demo/utilities';
 import { Link, Route, Routes } from 'react-router';
 import styled from 'styled-components';
 import NxWelcome from './nx-welcome';
 
-import { makeFetchCall } from '@monorepo-demo/utilities';
+import {
+  TemplateLiteralLogger,
+  logger,
+  makeFetchCall,
+  setDefault,
+  setDefaultCall2,
+  useLog,
+} from '@monorepo-demo/utilities';
 
 const StyledApp = styled.div`
   // Your style here
@@ -14,6 +22,45 @@ export function App() {
     {},
     { onSuccess: (data) => console.log({ data }) }
   );
+  const logDebugger = new TemplateLiteralLogger({
+    enabled: true,
+    minLevel: 'debug',
+    prefix: '[TestLogger]',
+  });
+  const loggy = setDefaultCall2(logDebugger, (target, message, ...args) => {
+    console.log('Intercepted call:', message, ...args);
+    target.defaultBehaviour(message, ...args);
+  });
+  // loggy`Yolo ${2}`;
+  const log2 = logger(`[Testing 123]`);
+  log2.info`${loggy}`;
+  log2.info`${1} ${{
+    car: { fang: 'dastin', moo: ['lah', 'lah', 'lah'] },
+  }}`;
+  log2.info`${loggy}`;
+  log2.info`${loggy.defaultBehaviour}`;
+  const lolo = loggy.defaultBehaviour.bind(loggy);
+  loggy.defaultBehaviour`Yolo ${2}`;
+  TestStuff();
+  const loggy2 = useLog({ prefix: '[TestLogger2]', enabled: true }, 'log');
+  lolo`7777 ${11}`;
+  loggy2`1234 ${5678}`;
+
+  // const simpleProxy = new Proxy(
+  //   {},
+  //   {
+  //     apply: function (target, thisArg, args) {
+  //       console.log('Simple proxy apply triggered:', args);
+  //       return 'Proxy called!';
+  //     },
+  //   }
+  // );
+
+  // simpleProxy`Test`;
+
+  // log()`Testing 123 ${678} ${{ fire: 'fox', megan: ['dox', 'man'] }}`;
+  // log`Testing 123 ${678} ${{ fire: 'fox', megan: ['dox', 'man'] }}`;
+  // log`Testing 123 ${678} ${{ fire: 'fox', megan: ['dox', 'man'] }}`;
   return (
     <StyledApp>
       <NxWelcome title="@monorepo-demo/open-store" />
